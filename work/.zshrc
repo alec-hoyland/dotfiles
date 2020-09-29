@@ -5,11 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# If you come from bash you might have to change your $PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/ahoyland/.oh-my-zsh"
+export ZSH="/home/hoyland/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -102,24 +101,17 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshconfig="gedit ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/ahoyland/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/ahoyland/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/ahoyland/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/ahoyland/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# virtualenvwrapper environment variables
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source ~/.local/bin/virtualenvwrapper.sh
+export WORKON_HOME=~/.virtualenvs
+export PIP_VIRTUALENV_BASE=~/.virtualenvs
+export PIP3_VIRTUALENV_BASE=~/.virtualenvs
 
