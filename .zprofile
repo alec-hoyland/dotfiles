@@ -10,7 +10,7 @@ function start_agent {
     . "${SSH_ENV}" > /dev/null
     /usr/bin/ssh-add;
     # also add files ending in github
-    /usr/bin/ssh-add /home/alec/.ssh/id_rsa_github;
+    #/usr/bin/ssh-add /home/ahoyland/.ssh/id_rsa;
 }
 
 # Source SSH settings, if applicable
@@ -24,3 +24,5 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
+
+#export PATH=$PATH:$HOME/miniconda3/bin
