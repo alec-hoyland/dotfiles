@@ -1,3 +1,4 @@
+export PATH=$HOME/.local/bin:$PATH
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -8,7 +9,7 @@ fi
 # If you come from bash you might have to change your $PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/hoyland/.oh-my-zsh"
+export ZSH="/home/alec/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -109,9 +110,35 @@ alias zshconfig="gedit ~/.zshrc"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # virtualenvwrapper environment variables
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source ~/.local/bin/virtualenvwrapper.sh
-export WORKON_HOME=~/.virtualenvs
-export PIP_VIRTUALENV_BASE=~/.virtualenvs
-export PIP3_VIRTUALENV_BASE=~/.virtualenvs
+#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+#source ~/.local/bin/virtualenvwrapper.sh
+#export WORKON_HOME=~/.virtualenvs
+#export PIP_VIRTUALENV_BASE=~/.virtualenvs
+#export PIP3_VIRTUALENV_BASE=~/.virtualenvs
 
+## PYENV
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+## VIRTUALENVWRAPPER
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/code
+source $HOME/.local/bin/virtualenvwrapper.sh
+
+## AWS
+export AWS_PROFILE=dev
+export PATH=/usr/local/bin/:$PATH
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+complete -C '/usr/local/bin/aws_completer' aws
+
+## KUBERNETES
+source <(kubectl completion zsh)  # set up autocomplete in zsh into the current shell
+echo '[[ $commands[kubectl] ]] && source <(kubectl completion zsh)' >> ~/.zshrc # add autocomplete permanently to your zsh shell
+alias k=kubectl
+complete -o default -F __start_kubectl k
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
