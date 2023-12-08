@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /usr/bin/env bash
 
 # install useful packages
 sudo apt install neofetch
@@ -24,4 +24,4 @@ source ~/.zshrc
 tmux source ~/.tmux.conf
 
 # copy dotfiles
-cp work/* ~/
+cp .p10k.zsh .tmux.conf .zprofile .zshrc .tmux.conf.local ~/
