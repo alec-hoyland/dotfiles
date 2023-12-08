@@ -24,3 +24,4 @@ flatpak install flathub $(cat $1/flatpaklist.txt | awk '{print $1}')
 
 # copy and extract home directory
 tar -xzvf $1/home-dir-backup.tar.gz -C $HOME/
+rm -rf ~/.cache

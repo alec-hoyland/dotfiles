@@ -10,18 +10,7 @@ if [ "$1" == "-h" ]; then
 fi
 
 # backup home directory
-# if exists, ask user if they want to overwrite
-if [ -d "$1/home-dir-backup.tar.gz" ]; then
-    read -p "Backup directory already exists. Overwrite? (y/n) " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        rm -rf $1
-        tar -czvf $1/home-dir-backup.tar.gz $HOME/
-    else
-        # do nothing
-        echo "not overwriting"
-    fi
-fi
+tar -czvf $1/home-dir-backup.tar.gz $HOME/
 
 # backup packages
 sudo dpkg --get-selections > $1/pkglist.txt
