@@ -131,3 +131,5 @@ alias zshconfig="gedit ~/.zshrc"
 #export PIP_VIRTUALENV_BASE=~/.virtualenvs
 #export PIP3_VIRTUALENV_BASE=~/.virtualenvs
 
+
+[[ -s ~/.guild/zsh_completion ]] && . ~/.guild/zsh_completion  # Enable completion for guild
