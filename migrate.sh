@@ -11,7 +11,7 @@ fi
 
 # install packages
 sudo apt update
-sudo dpkg --set-selections > $1/pgklist.txt
+sudo dpkg --set-selections < $1/pgklist.txt
 sudo apt-get dselect-upgrade -y
 
 # install packages from ppas
