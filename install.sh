@@ -3,7 +3,7 @@
 sudo apt update
 
 # install useful packages
-sudo apt install -y neofetch tmux lm-sensors pandoc xclip texlive-full neovim python3-pynvim flatpak
+sudo apt install -y neofetch tmux lm-sensors pandoc xclip texlive-full neovim python3-pynvim flatpak pip
 
 # Discord
 
@@ -47,6 +47,9 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 && sudo apt update \
 && sudo apt install gh -y
 
+# Guild AI
+pip install guildai
+
 # change shell to zsh
 chsh -s $(which zsh)
 
@@ -61,6 +64,14 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 # copy dotfiles
 cp .p10k.zsh .tmux.conf .zprofile .zshrc .tmux.conf.local ~/
+
+# Completions
+mkdir ~/.oh-my-zsh/completions
+gh completion -s zsh > ~/.oh-my-zsh/completions/_gh
+guild completion --install
+
+# Install Julia
+curl -fsSL https://install.julialang.org | sh
 
 # source the correct files
 source ~/.zprofile
